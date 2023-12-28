@@ -5,6 +5,7 @@ import morgan from 'morgan';
 
 // rutas
 import productsRoutes from './routes/products.routes.js';
+import authRoutes from './routes/auth.routes.js';
 
 config();
 
@@ -21,5 +22,6 @@ server.get('/', (req, res) => {
 });
 
 server.use('/products', productsRoutes);
+server.use('/api/auth', authRoutes);
 
 server.listen(process.env.PORT);
