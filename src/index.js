@@ -3,6 +3,9 @@ import './connection/database.js';
 import { config } from 'dotenv';
 import morgan from 'morgan';
 
+// initial setup
+import { createRoles } from './libs/initialSetup.js';
+
 // rutas
 import productsRoutes from './routes/products.routes.js';
 import authRoutes from './routes/auth.routes.js';
@@ -10,6 +13,8 @@ import authRoutes from './routes/auth.routes.js';
 config();
 
 const server = express();
+
+createRoles(); // crea tres tipos de "roles" en la base de datos
 
 server.use(express.json());
 
