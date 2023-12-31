@@ -9,6 +9,7 @@ import { createRoles } from './libs/initialSetup.js';
 // rutas
 import productsRoutes from './routes/products.routes.js';
 import authRoutes from './routes/auth.routes.js';
+import userRoutes from './routes/user.routes.js';
 
 config();
 
@@ -28,5 +29,6 @@ server.get('/', (req, res) => {
 
 server.use('/products', productsRoutes);
 server.use('/api/auth', authRoutes);
+server.use('/users', userRoutes);
 
 server.listen(process.env.PORT);
