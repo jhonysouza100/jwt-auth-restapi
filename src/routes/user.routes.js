@@ -1,10 +1,17 @@
 import { Router } from "express";
-import {getUsers, createUser} from "../controllers/user.controller.js";
+import {getUsers} from "../controllers/user.controller.js";
+import { signup } from "../controllers/auth.controller.js";
+
+// middlewares
+import { authJwt, verifySignup } from '../middlewares/index.js';
+const {verifyToken, isAdmin} = authJwt;
+const {checkRolesExists, checkDuplicateRecord} = verifySignup;
+
 
 const router = Router();
 
 router.get('/', getUsers);
 
-router.post('/', createUser);
+router.post('/', [verifyToken, isAdmin, checkRolesExists, checkDuplicateRecord], signup);
 
 export default router;

@@ -8,7 +8,3 @@ export const getUsers = async (req, res) => {
     res.status(400).json({message: "Request failed"});
   }
 };
-
-export const createUser = async (req, res) => {
-  res.json("Creating user");
-}

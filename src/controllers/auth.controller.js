@@ -7,6 +7,12 @@ export const signup = async (req, res) => {
 
   const {username, email, password, roles} = req.body;
 
+  // si se intenta crear un "admin", la operacion se cancela inmediatamente
+  if (roles.some(role => ["admin", "moderator", "operator"].includes(role))) {
+    return res.status(400).json({message: `Buen intento amigo >_0`});
+  } // IMPIDE CREAR UN "ADMIN" DESDE REGISTRO
+
+
   const newUser = new User({
     username,
     email,
